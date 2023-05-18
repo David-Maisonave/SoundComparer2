@@ -1,0 +1,12 @@
+Enter solution release name below. Recommend using name with no spaces.
+SoundComparer2 
+MajorVersionEnter desired major version number below. Value must be between 0-9999
+2
+Enter targeted dotnet version below.
+net7.0 
+Enter release title which can use environmental variables and/or batch variables like the following:%ReleaseName%, %MajorVersion%, %MinorVersion%, %DotNetVer%, %ReleaseTitle%, %Identifier%, %ProgramVersion%, %ReleaseTag%, %YEAR%, %MONTH%, %DAY%
+"%ReleaseName% Version %MajorVersion%.%MinorVersion%"                                                                                   "
+Enter release notes which can also use environmental variables.
+Version %MajorVersion%.%MinorVersion% build date=%YEAR%-%MONTH%-%DAY%; 
+Project to change version. Only needed for MSI package
+src\SoundComparer.csproj
