@@ -57,6 +57,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="WaveUtils\WaveControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -65,15 +70,23 @@
     <EmbeddedResource Include="FormComparer.resx">
       <DependentUpon>FormComparer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="WaveUtils\WaveControl.resx">
       <DependentUpon>WaveControl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include=".gitignore" />
     <Content Include="Resources\Image\open_file.png" />
     <Content Include="Resources\Image\play.png" />
     <Content Include="Resources\Image\sound.png" />
+    <None Include="Resources\Image\StopButton.png" />
+    <Content Include="Resources\Image\TransparentBluePlayButton.48.png" />
+    <Content Include="Resources\Image\TransparentYellowFolder-Add.48.png" />
     <Content Include="sound.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

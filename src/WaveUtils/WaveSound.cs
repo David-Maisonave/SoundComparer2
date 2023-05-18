@@ -3,6 +3,7 @@ using System.IO;
 using System.ComponentModel;
 using System.Windows.Forms;
 using SoundComparer.DigitalFilter;
+using System.Text;
 
 namespace SoundComparer.WaveUtils
 {
@@ -380,23 +381,28 @@ namespace SoundComparer.WaveUtils
             ProgressBar.PerformStep();
         }
 
-        /// <summary>Read a chunk of four bytes from a wave file</summary>
-        /// <param name="reader">Reader for the wave file.</param>
-        /// <returns>Four characters.</returns>
-        private string ReadChunk(BinaryReader reader)
-        {
-            byte[] ch = new byte[4];
-            reader.Read(ch, 0, ch.Length);
-            return System.Text.Encoding.ASCII.GetString(ch,0,4);
-        }
+		/// <summary>Read a chunk of four bytes from a wave file</summary>
+		/// <param name="reader">Reader for the wave file.</param>
+		/// <returns>Four characters.</returns>
+		private string ReadChunk(BinaryReader reader) {
+			byte[] ch = new byte[4];
+			reader.Read(ch, 0, ch.Length);
+			return System.Text.Encoding.ASCII.GetString(ch, 0, 4);
+		}
 
-        /// <summary>
-        /// Read the header from a wave file, and move the
-        /// reader's position to the beginning of the data chunk
-        /// </summary>
-        /// <param name="reader">Reader for the wave file.</param>
-        /// <returns>Format of the wave.</returns>
-        private WaveFormat ReadHeader(BinaryReader reader)
+		private string ReadByte(BinaryReader reader) {
+			byte[] ch = new byte[1];
+			reader.Read(ch, 0, ch.Length);
+			return System.Text.Encoding.ASCII.GetString(ch, 0, 4);
+		}
+
+		/// <summary>
+		/// Read the header from a wave file, and move the
+		/// reader's position to the beginning of the data chunk
+		/// </summary>
+		/// <param name="reader">Reader for the wave file.</param>
+		/// <returns>Format of the wave.</returns>
+		private WaveFormat ReadHeader(BinaryReader reader)
         {
             if (ReadChunk(reader) != "RIFF")
                 throw new Exception("Invalid file format");
@@ -429,12 +435,17 @@ namespace SoundComparer.WaveUtils
                 len--;
             }
 
-            // Assume the data chunk is aligned
-            string chunk;
+			// Do NOT assume the data chunk is aligned
+			string chunk = "";
+			byte[] b = new byte[1];
             do
             {
-                chunk = ReadChunk(reader);
-            } while (reader.BaseStream.Position < reader.BaseStream.Length && chunk != "data");
+				b[0] = reader.ReadByte();
+				if (b[0] > 31 && b[0] < 128)
+					chunk += Encoding.ASCII.GetString(b);
+				else
+					chunk = "";
+			} while (reader.BaseStream.Position < reader.BaseStream.Length && chunk != "data" && !chunk.EndsWith("data"));
 
             return carrierFormat;
         }
