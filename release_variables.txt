@@ -9,5 +9,5 @@ Enter release title which can use environmental variables and/or batch variables
 Enter release notes which can also use environmental variables.
 Version %MajorVersion%.%MinorVersion% build date=%YEAR%-%MONTH%-%DAY%; 
 Project to change version. Only needed for MSI package
-foofoo
+na
 

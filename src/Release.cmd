@@ -360,7 +360,7 @@ if [%NoIncVer%] == [%IsTrue%] (
 	goto :SkipSaveVersionToProj
 )
 
-if [%ProjToChngVer%] == [] goto :SkipSaveVersionToProj
+if [%ProjToChngVer%] == [na] goto :SkipSaveVersionToProj
 set ProjToChngVer_temp=%ProjToChngVer%.temp
 set ProjToChngVer_rename=%ProjToChngVer%.original
 if exist %ProjToChngVer% (
