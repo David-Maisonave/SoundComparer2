@@ -11,3 +11,4 @@ FFMpeg.exe is required in order to use [ConvertAudioFileToSimpleWav.cmd](https:/
 
 ## Future Changes
 - Looking to add the logic that's in the [ConvertAudioFileToSimpleWav.cmd](https://github.com/David-Maisonave/SoundComparer2/blob/master/ConvertAudioFileToSimpleWav.cmd) batch file to SoundComparer2
+- Have the temporary files created in Windows temporary folder, and perform clean up on program exit.
