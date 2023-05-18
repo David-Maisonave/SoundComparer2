@@ -81,16 +81,19 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="release_minor_version.txt" />
+    <Content Include="release_variables.txt" />
     <Content Include="Resources\Image\open_file.png" />
     <Content Include="Resources\Image\play.png" />
     <Content Include="Resources\Image\sound.png" />
+    <None Include="Release.cmd" />
     <None Include="Resources\Image\StopButton.png" />
     <Content Include="Resources\Image\TransparentBluePlayButton.48.png" />
     <Content Include="Resources\Image\TransparentYellowFolder-Add.48.png" />
     <Content Include="sound.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
